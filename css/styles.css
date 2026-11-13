@@ -146,6 +146,10 @@
     to   { transform: scaleY(1); }
 }
 
+@keyframes deslizar {
+    to { transform: translateX(calc(-100% + 100vw)); }
+}
+
 
 
 /* Y aquí las animaciones, solo para los navegadores que las entienden */
@@ -212,8 +216,30 @@
         }
 
 
-        /* EXTRA 2 · Escaparate horizontal (.escaparate, .escaparate-fijo, .escaparate-pista)
+
+       /* EXTRA 2 · Escaparate horizontal (.escaparate, .escaparate-fijo, .escaparate-pista)
            Mira el README: sección de 300vh, interior sticky y pista que se desplaza. */
+        .escaparate {
+            height: 300vh;
+            padding-block: 0;
+            view-timeline-name: --escaparate;
+        }
+        .escaparate-fijo {
+            position: sticky;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .escaparate-pista {
+            width: max-content;
+            overflow-x: visible;
+            animation: deslizar linear both;
+            animation-timeline: --escaparate;
+            animation-range: contain 0% contain 100%;
+        }
 
     }
 }
