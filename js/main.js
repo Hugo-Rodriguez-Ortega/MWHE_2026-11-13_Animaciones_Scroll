@@ -16,3 +16,22 @@ const lenis = new Lenis({
     autoRaf: true,
     anchors: { offset: -80 }
 });
+
+const piezas = document.querySelectorAll('.pieza');
+
+function suavizar(t) {
+    return t < 0.5 ? 8 * t ** 4 : 1 - (-2 * t + 2) ** 4 / 2;
+}
+
+function escalarPiezas() {
+    const centro = window.innerWidth / 2;
+    piezas.forEach(function (pieza) {
+        const caja = pieza.getBoundingClientRect();
+        const distancia = Math.abs(caja.left + caja.width / 2 - centro) / centro;
+        const cerca = Math.max(0, 1 - distancia);
+        pieza.style.setProperty('--cerca', suavizar(cerca));
+    });
+}
+
+window.addEventListener('scroll', escalarPiezas);
+escalarPiezas();
