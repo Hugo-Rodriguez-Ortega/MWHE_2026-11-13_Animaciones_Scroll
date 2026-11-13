@@ -141,6 +141,11 @@
     to { opacity: 0; transform: translateY(-4rem) scale(0.9); }
 }
 
+@keyframes dibujar {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
+}
+
 
 
 /* Y aquí las animaciones, solo para los navegadores que las entienden */
@@ -198,6 +203,13 @@
         /* EXTRA 1 · La línea del tiempo se dibuja (.linea-tiempo::before)
            Pista: view-timeline-name: --historia en .linea-tiempo
            y animation-timeline: --historia en su ::before. */
+        .linea-tiempo {
+            view-timeline-name: --historia;
+        }
+        .linea-tiempo::before {
+            animation: dibujar linear both;
+            animation-timeline: --historia;
+        }
 
 
         /* EXTRA 2 · Escaparate horizontal (.escaparate, .escaparate-fijo, .escaparate-pista)
