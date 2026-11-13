@@ -23,7 +23,7 @@
         position: fixed;
         inset: 0 0 auto 0;
         z-index: 50;
-        height: 4px;
+        height: 2px;
         background: var(--color-acento);
         transform-origin: 0 50%;
         transform: scaleX(0);
@@ -122,6 +122,10 @@
    ========================================================= */
 
 /* Escribe aquí tus @keyframes (fuera de capas) */
+@keyframes crecer {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+}
 
 
 
@@ -131,6 +135,10 @@
 
         /* TAREA 1 · Barra de progreso (.barra-progreso)
            Línea de tiempo: scroll(root). Anima transform: scaleX(0) -> scaleX(1). */
+        .barra-progreso {
+            animation: crecer linear both;
+            animation-timeline: scroll(root);
+        }
 
 
         /* TAREA 2 · Aparecer (.revelar)
